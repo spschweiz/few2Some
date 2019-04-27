@@ -1,0 +1,18 @@
+<ul>
+    <f:for each="{participation.recommendedUsers}" as="user">
+        <li>
+            <img  class="instagram_profile" src="https://{user.imageUrl}" width="100px"/><br>
+            <a class="instagram_profile" href="https://instagram.com/{user.username}" target="_blank">{user.username}</a>
+        </li>
+    </f:for>
+
+</ul>
+
+<script>
+
+    $('.instagram_profile').click(
+        function() {
+            copyToClipBoard();
+        });
+
+</script>

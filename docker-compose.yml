@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  webserver:
+    build: ./docker/webserver
+    environment:
+      XDEBUG_CONFIG: remote_host=172.27.0.1
+    ports:
+    - "80:80"
+    - "443:443"
+    links:
+    - database
+    volumes:
+    - ${LOG_DIR-./logs/apache2}:/var/log/apache2
+    - ./Web:/var/www/html
+    - ./:/var/www
+
+  database:
+    build: ./docker/database
+    ports:
+    - "3306:3306"
+    command:
+    - --character-set-server=utf8
+    - --collation-server=utf8_unicode_ci
+    volumes:
+    - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: flow
+      MYSQL_USER: flow
+      MYSQL_PASSWORD: flow
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"

@@ -1,0 +1,6 @@
+Local setup
+- start docker: docker-compose up -d
+- login to docker container: docker exec -ti few2some_webserver_1 bash
+- im container
+-- cd /var/www
+-- composer install

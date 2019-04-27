@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+
+<f:section name="Title">New campaign</f:section>
+
+<f:section name="Content">
+    <p>Just fill out the following form to create a new campaign:</p>
+
+    <f:form action="create" objectName="newCampaign">
+        <ol>
+            <li>
+                <label for="name">Name</label>
+                <f:form.textfield property="name" id="name" />
+            </li>
+        
+            <li>
+                <label for="textToShare">Text to share</label>
+                <f:form.textfield property="textToShare" id="textToShare" />
+            </li>
+        
+            <li>
+                <label for="instagramAccounts">Instagram accounts</label>
+                <f:form.textfield property="instagramAccounts" id="instagramAccounts" />
+            </li>
+        
+            <li>
+                <f:form.submit value="Create" />
+            </li>
+        </ol>
+    </f:form>
+</f:section>

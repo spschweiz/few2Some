@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "few2some/few2some",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Few2Some\\Few2Some\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Few2Some.Few2Some"
+        }
+    }
+}

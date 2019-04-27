@@ -1,3 +1,21 @@
+# FLOW
+
+/Build/
+/Data/
+/Packages/*
+!/Packages/Application
+/Packages/Application/*
+!/Packages/Application/Few2Some*
+/Web/
+/bin/
+/logs/
+/Readme.rst
+/Upgrading.rst
+/flow
+/flow.bat
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

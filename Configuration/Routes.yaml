@@ -1,0 +1,16 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the Flow manual for possible configuration options.    #
+#                                                                        #
+-
+  name: 'Homepage'
+  uriPattern: ''
+  defaults:
+    '@package':    'Few2Some.Few2Some'
+    '@controller': 'Campaign'
+    '@action':     'index'
+    '@format':     'html'

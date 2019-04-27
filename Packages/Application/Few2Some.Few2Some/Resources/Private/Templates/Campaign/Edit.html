@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Edit campaign "{campaign.name}"</f:section>
+
+<f:section name="Content">
+    <f:form action="update" object="{campaign}" objectName="campaign">
+        <ol>
+            <li>
+                <label for="name">Name</label>
+                <f:form.textfield property="name" id="name" />
+            </li>
+        
+            <li>
+                <label for="textToShare">Text to share</label>
+                <f:form.textfield property="textToShare" id="textToShare" />
+            </li>
+        
+            <li>
+                <label for="instagramAccounts">Instagram accounts</label>
+                <f:form.textfield property="instagramAccounts" id="instagramAccounts" />
+            </li>
+        
+            <li>
+                <label for="participations">Participations</label>
+                <f:form.textfield property="participations" id="participations" />
+            </li>
+        
+            <li>
+                <f:form.submit value="Update" />
+            </li>
+        </ol>
+    </f:form>
+</f:section>
