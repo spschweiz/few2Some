@@ -1,0 +1,21 @@
+<f:layout name="Default" />
+
+<f:section name="Title">A list of campaigns</f:section>
+
+<f:section name="Content">
+    <f:if condition="{campaigns}">
+        <f:then>
+            <ul>
+                <f:for each="{campaigns}" as="campaign">
+                    <li>
+                        <f:link.action action="participate" controller="Campaign" arguments="{campaign: campaign}">{campaign.name}</f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </f:then>
+        <f:else>
+            <p>No campaigns created yet.</p>
+        </f:else>
+    </f:if>
+    <p><f:link.action action="new">Create a new campaign</f:link.action></p>
+</f:section>

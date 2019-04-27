@@ -1,0 +1,44 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Participate in campaign"{participation.campaign.name}"</f:section>
+
+<f:section name="Content">
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+            crossorigin="anonymous"></script>
+    <table>
+
+        <tr>
+            <th>User</th>
+            <td>{participation.activist.username}</td>
+        </tr>
+
+        <tr>
+            <th>Name</th>
+            <td>{participation.campaign.name}</td>
+        </tr>
+    
+        <tr>
+            <th>Text to share</th>
+            <td>{participation.campaign.textToShare}</td>
+        </tr>
+    </table>
+
+    <script>
+        var uri = "{f:uri.action(action: 'getRecommendations', arguments: '{participation: participation}')}";
+
+        for (i = 0; i < 6; i++) {
+            setTimeout(function(){
+                $.ajax({url: uri, success: function(result){
+                        $("#recommendedUsers").html(result);
+                    }});
+            }, 3000*i);
+        }
+
+    </script>
+
+    <div id="recommendedUsers">
+    </div>
+
+</f:section>

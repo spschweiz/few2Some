@@ -1,0 +1,9 @@
+<ul>
+    <f:for each="{participation.recommendedUsers}" as="user">
+        <li>
+            <img src="https://{user.imageUrl}" width="100px"/><br>
+            <a href="https://instagram.com/{user.username}" target="_blank">{user.username}</a>
+        </li>
+    </f:for>
+
+</ul>
