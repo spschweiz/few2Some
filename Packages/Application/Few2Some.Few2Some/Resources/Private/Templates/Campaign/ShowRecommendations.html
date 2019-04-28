@@ -7,58 +7,92 @@
             src="https://code.jquery.com/jquery-3.4.0.min.js"
             integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
             crossorigin="anonymous"></script>
-    <table>
 
-        <tr>
-            <th>User</th>
-            <td>{participation.activist.username}</td>
-        </tr>
+    <f:if condition="{errorMessage}">
+        <f:then>
+            <div class="callout alert">
+                <h5>Private Accounts</h5>
+                <p>Vermutlich hast du deinen Account auf “privat” eingestellt und wir wollen deine Privatsphäre weiterhin respektieren.
+                    Du kannst dennoch mitmachen: Der Account “{userToFollow}” hat dir soeben eine Abo-Anfrage geschickt.
+                    Bitte bestätige diese und rufe danach unsere Seite neu auf. Dieser Account wird ausschliesslich zum Vergleich von deinen
+                    und Cédrics Followern genutzt und tritt sonst niemals in Erscheinung.
 
-        <tr>
-            <th>Name</th>
-            <td>{participation.campaign.name}</td>
-        </tr>
-    
-        <tr>
-            <th>Text to share</th>
-            <td id="textToShare">{participation.campaign.textToShare}</td>
-        </tr>
-    </table>
+                    <f:link.action action="showRecommendations" arguments="{username: participation.activist.username, campaign: participation.campaign}">
+                        Jetzt neu laden
+                    </f:link.action>.
+                </p>
+            </div>
+        </f:then>
+        <f:else>
+            <p>
+                Was soll ich jetzt genau tun?
+                Unten erscheinen nun bis zu 30 eurer gemeinsamen Instagram-Kontakte. Sei weise und entscheide selbst, bei welchen es sich lohnt, sie zu kontaktieren
+                (Brands, Journis oder politische Mitbewerber wohl eher weniger…).
+                Klicke auf das Foto einer Person klickst, öffnet sich das Profil der Person im Instagram-App.
+                Du klickst auf “Nachricht” und fügst folgende Nachricht ins Textfeld ein (du darfst die Nachricht natürlich personalisieren, wichtig ist der Link!):
+            </p>
 
-    <script>
-        var uri = "{f:uri.action(action: 'getRecommendations', arguments: '{participation: participation}')}";
+            <p id="textToShare">{participation.campaign.textToShare}</p>
 
-        for (i = 0; i < 6; i++) {
-            setTimeout(function(){
-                $.ajax({url: uri, success: function(result){
-                        $("#recommendedUsers").html(result);
-                    }});
-            }, 3000*i);
-        }
+            <div class="callout primary">
+                <i class="fas fa-info-circle"></i> Der Textvorschlag wird automatisch kopiert wenn du eine Person anklickst.
+            </div>
 
-        function copyToClipBoard(){
-            var target = document.getElementById('textToShare');
-            var range, select;
-            if (document.createRange) {
-                range = document.createRange();
-                range.selectNode(target)
-                select = window.getSelection();
-                select.removeAllRanges();
-                select.addRange(range);
-                document.execCommand('copy');
-                select.removeAllRanges();
-            } else {
-                range = document.body.createTextRange();
-                range.moveToElementText(target);
-                range.select();
-                document.execCommand('copy');
-            }
+            <h3>Personalisierte Kontaktvorschläge für {participation.activist.username}</h3>
 
-        }
+            <script>
+                var uri = "{f:uri.action(action: 'getRecommendations', arguments: '{participation: participation}')}";
+                var lastResponse = '';
 
-    </script>
+                function callAjaxAndCheckIfDone(){
+                    $.ajax({url: uri, success: function(result){
+                            if(lastResponse !== result) {
+                                $("#recommendedUsers").html(result);
+                                lastResponse = result;
+                            }
+                        }});
 
-    <div id="recommendedUsers">
-    </div>
+
+                    if (!lastResponse.includes("<!--DONE-->")) {
+                        setTimeout(function(){
+                            callAjaxAndCheckIfDone();
+                        }, 5000);
+                    }
+                }
+
+
+                setTimeout(function(){
+                    callAjaxAndCheckIfDone();
+                }, 5000);
+
+
+
+                function copyToClipBoard(){
+                    var target = document.getElementById('textToShare');
+                    var range, select;
+                    if (document.createRange) {
+                        range = document.createRange();
+                        range.selectNode(target)
+                        select = window.getSelection();
+                        select.removeAllRanges();
+                        select.addRange(range);
+                        document.execCommand('copy');
+                        select.removeAllRanges();
+                    } else {
+                        range = document.body.createTextRange();
+                        range.moveToElementText(target);
+                        range.select();
+                        document.execCommand('copy');
+                    }
+
+                }
+
+            </script>
+            <div id="recommendedUsers">
+                <i class="fas fa-cog fa-spin"></i>
+                Deine Kontakte werden gescannt. Dies kann einige Minuten dauern...
+            </div>
+        </f:else>
+    </f:if>
 
 </f:section>

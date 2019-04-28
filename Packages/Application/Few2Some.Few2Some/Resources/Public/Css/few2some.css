@@ -1,0 +1,69 @@
+.grid-container {
+    max-width: 45rem;
+    padding-bottom: 30px;
+}
+
+.logo {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    margin:auto;
+}
+
+.instagramUserList {
+
+    list-style: none;
+    margin: 0;
+}
+
+.instagramUserList, .submit {
+
+    list-style: none;
+    margin: 0;
+
+    background: rgba(225,48,108,1);
+    background: -moz-linear-gradient(-45deg, rgba(225,48,108,1) 0%, rgba(225,48,108,1) 24%, rgba(247,119,55,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(225,48,108,1)), color-stop(24%, rgba(225,48,108,1)), color-stop(100%, rgba(247,119,55,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(225,48,108,1) 0%, rgba(225,48,108,1) 24%, rgba(247,119,55,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(225,48,108,1) 0%, rgba(225,48,108,1) 24%, rgba(247,119,55,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(225,48,108,1) 0%, rgba(225,48,108,1) 24%, rgba(247,119,55,1) 100%);
+    background: linear-gradient(135deg, rgba(225,48,108,1) 0%, rgba(225,48,108,1) 24%, rgba(247,119,55,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1306c', endColorstr='#f77737', GradientType=1 );
+
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: 0;
+}
+
+.instagramUserList li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(225,225,225,0.5);
+}
+
+.instagramUserList a.instagram_profile {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 120%;
+}
+
+.instagramUserList a.instagram_profile i {
+    font-size: 150%;
+}
+
+.instagramUserList img {
+    width: 60px;
+    border-radius: 30px;
+}
+
+p#textToShare {
+    border: 1px grey solid;
+    padding: 10px;
+    background-color: #dddddd;
+}

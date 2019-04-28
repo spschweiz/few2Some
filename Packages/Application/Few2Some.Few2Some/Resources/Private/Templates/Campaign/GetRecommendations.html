@@ -1,8 +1,11 @@
-<ul>
+<ul class="instagramUserList">
     <f:for each="{participation.recommendedUsers}" as="user">
         <li>
-            <img  class="instagram_profile" src="https://{user.imageUrl}" width="100px"/><br>
-            <a class="instagram_profile" href="https://instagram.com/{user.username}" target="_blank">{user.username}</a>
+            <a class="instagram_profile" href="https://instagram.com/{user.username}" target="_blank">
+                <img src="https://{user.imageUrl}" width="100px"/>
+                {user.username}
+                <i class="fas fa-chevron-right"></i>
+            </a>
         </li>
     </f:for>
 
@@ -16,3 +19,11 @@
         });
 
 </script>
+
+<f:if condition="{participation.isProcessed}">
+    <f:then><!--DONE--></f:then>
+    <f:else>
+        <i class="fas fa-cog fa-spin"></i>
+        Deine Kontakte werden gescannt. Dies kann einige Minuten dauern...
+    </f:else>
+</f:if>

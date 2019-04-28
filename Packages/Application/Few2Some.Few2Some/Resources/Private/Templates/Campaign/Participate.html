@@ -1,32 +1,27 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Show campaign"{campaign.name}"</f:section>
+<f:section name="Title">{campaign.name}</f:section>
 
 <f:section name="Content">
-    <table>
 
-        <tr>
-            <th>Name</th>
-            <td>{campaign.name}</td>
-        </tr>
-    
-        <tr>
-            <th>Text to share</th>
-            <td>{campaign.textToShare}</td>
-        </tr>
-    </table>
+    <div class="callout alert show-for-medium">
+        <h5>ScreenTooBigException</h5>
+        <p>
+            Das Ziel dieses Tools ist das Versenden von Nachrichten in Instagram, das funktioniert aber leider nur in der App, und es sieht so aus, wie wenn du diese Seite
+            auf einem Desktop-Computer aufrufen würdest.
+        </p>
+    </div>
 
-    <f:form action="showRecommendations">
-        <ul class="no-bullets">
-            <li>
-                <label for="name"><i class="fab fa-instagram"></i> Instagram Username</label>
-                 <f:form.textfield name="username" id="name" />
-            </li>
+    <p>
+        Crowd-Messaging: Kontaktiere deine Instagram-Freund*innen für “Cédric Wermuth in den Ständerät”.
+        Und zwar nicht beliebig, sondern gezielt die Freund*innen, die Cédric auf Instagram bereits unterstützen und darum offen für deine Nachricht sind.
+    </p>
+    <img class="logo" src="{f:uri.resource(path:'Images/cw.jpg', package: 'Few2Some.Few2Some')}"/>
 
-            <li>
-                <f:form.hidden name="campaign" value="{campaign}" />
-                <f:form.submit value="Empfehlungen anzeigen" />
-            </li>
-        </ul>
+    <f:form action="showRecommendations" method="get">
+        <label for="name"><i class="fab fa-instagram"></i> Instagram Username</label>
+         <f:form.textfield name="username" id="name" />
+        <f:form.hidden name="campaign" value="{campaign}" />
+        <f:form.submit value="Kontaktvorschläge anzeigen" class="submit"/>
     </f:form>
 </f:section>

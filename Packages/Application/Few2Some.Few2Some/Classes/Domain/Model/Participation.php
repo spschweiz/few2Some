@@ -35,6 +35,12 @@ class Participation
      */
     protected $recommendedUsers;
 
+    /**
+     * @var bool
+     * @ORM\Column(nullable=true)
+     */
+    protected $isProcessed;
+
 
     /**
      * @return \Few2Some\Few2Some\Domain\Model\Campaign
@@ -99,4 +105,22 @@ class Participation
             $this->recommendedUsers->add($recommendedUser);
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function getIsProcessed()
+    {
+        return $this->isProcessed;
+    }
+
+    /**
+     * @param bool $isProcessed
+     */
+    public function setIsProcessed($isProcessed)
+    {
+        $this->isProcessed = $isProcessed;
+    }
+
+
 }

@@ -21,6 +21,7 @@ class Campaign
 
     /**
      * @var string
+     * @ORM\Column(type="text")
      */
     protected $textToShare;
 

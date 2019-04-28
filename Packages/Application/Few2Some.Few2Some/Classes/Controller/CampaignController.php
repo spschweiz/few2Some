@@ -69,9 +69,16 @@ class CampaignController extends ActionController
 
             $this->persistenceManager->persistAll();
 
-            file_get_contents("https://5e23594d.eu.ngrok.io/"
+            $json = file_get_contents("https://4a7ff9ce.eu.ngrok.io/"
                 . $this->persistenceManager->getIdentifierByObject($participation)
                 . "/" . trim($username) . "/" . $campaign->getInstagramAccounts());
+            $response = json_decode($json);
+            if($response->status == 'error'){
+                $this->view->assign('errorMessage', $response->message);
+                $this->view->assign('userToFollow', $response->user_to_follow);
+                $this->participationRepository->remove($participation);
+                $this->persistenceManager->persistAll();
+            }
         }
 
         $this->view->assign('participation', $participation);
@@ -92,6 +99,18 @@ class CampaignController extends ActionController
         $participation->addRecommendedUser($instagramUser);
         $this->participationRepository->update($participation);
 
+        $this->persistenceManager->persistAll();
+    }
+
+
+    /**
+     * @param \Few2Some\Few2Some\Domain\Model\Participation $participation
+     * @return void
+     */
+    public function markAsProcessedAction(Participation $participation)
+    {
+        $participation->setIsProcessed(true);
+        $this->participationRepository->update($participation);
         $this->persistenceManager->persistAll();
     }
 

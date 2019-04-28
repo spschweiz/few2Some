@@ -3,9 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title><f:render section="Title" /></title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="{f:uri.resource(path:'Images/herz.png', package: 'Few2Some.Few2Some')}" sizes="32x32">
         <!-- Compressed CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg==" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="{f:uri.resource(path:'Css/few2some.css', package: 'Few2Some.Few2Some')}" rel="stylesheet">
 
         <!-- Compressed JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/js/foundation.min.js" integrity="sha256-/PFxCnsMh+nTuM0k3VJCRch1gwnCfKjaP8rJNq5SoBg= sha384-9ksAFjQjZnpqt6VtpjMjlp2S0qrGbcwF/rvrLUg2vciMhwc1UJJeAAOLuJ96w+Nj sha512-UMSn6RHqqJeJcIfV1eS2tPKCjzaHkU/KqgAnQ7Nzn0mLicFxaVhm9vq7zG5+0LALt15j1ljlg8Fp9PT1VGNmDw==" crossorigin="anonymous"></script>
@@ -14,9 +18,10 @@
     <body>
         <f:flashMessages class="flashmessages" />
 
-        <h1><f:render section="Title" /></h1>
+
 
         <div class="grid-container">
+            <img class="logo" src="{f:uri.resource(path:'Images/logo.png', package: 'Few2Some.Few2Some')}"/>
             <f:render section="Content" />
         </div>
     </body>
